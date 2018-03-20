@@ -1,3 +1,6 @@
+create database monolithic;
+use monolithic;
+
 CREATE TABLE IF NOT EXISTS `goods` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL,
@@ -24,3 +27,9 @@ CREATE TABLE IF NOT EXISTS `purchases` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- micro 계정 추가 (비밀번호는 service)
+create user 'micro'@'%' identified by 'service';
+grant all privileges on monolithic.* to 'micro'@'%';
+flush privileges;
+select user, password from mysql.user where user='micro';
