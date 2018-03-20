@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+-- MSA 구조에서 각 테이블은 물리적으로 다른 장비에 위치할 수 있기 때문에 외래키는 지정하지 않았다.
 CREATE TABLE IF NOT EXISTS `purchases` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int NOT NULL,
