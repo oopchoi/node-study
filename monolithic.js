@@ -18,7 +18,7 @@ const purchases = require('./monolithic_purchases.js');
 var server = http.createServer((req, res) => {
     var method = req.method;
     var uri = url.parse(req.url, true);
-    var pathname = url.pathname;
+    var pathname = uri.pathname;
 
     if(method === "POST" || method === "PUT") {
         var body = "";
@@ -33,6 +33,12 @@ var server = http.createServer((req, res) => {
                 params = querystring.parse(body);
             }
 
+            console.log('pathname >>>>');
+            console.log(pathname);
+            console.log('method >>>>');
+            console.log(method);
+            console.log('params >>>>');
+            console.log(params);
             onRequest(res, method, pathname, params);
         });
     }else{
